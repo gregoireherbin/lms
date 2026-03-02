@@ -32,7 +32,8 @@ class AppFixtures extends Fixture
             $user->setNom($faker->lastName());
             $user->setPrenom($faker->firstName());
             $user->setEmail($faker->email());
-            $plainPassword = $faker->password();
+            // $plainPassword = $faker->password();
+            $plainPassword = '123456';
             $plainPasswords[] = $plainPassword;
             $hashedPassword = $this->passwordHasher->hashPassword($user, $plainPassword);
             $user->setPassword($hashedPassword);
