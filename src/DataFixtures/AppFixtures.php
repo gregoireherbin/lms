@@ -32,6 +32,7 @@ class AppFixtures extends Fixture
             $user->setNom($faker->lastName());
             $user->setPrenom($faker->firstName());
             $user->setEmail($faker->email());
+            //Mots de passe identiques pour tests
             // $plainPassword = $faker->password();
             $plainPassword = '123456';
             $plainPasswords[] = $plainPassword;
