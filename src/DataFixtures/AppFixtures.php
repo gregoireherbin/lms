@@ -53,7 +53,7 @@ class AppFixtures extends Fixture
         $manager->flush();
 
         // Inclure les données des cours à partir du fichier externe
-        $courseData = require __DIR__ . '/../Data/course_data.php';
+        $courseData = require __DIR__ . '/Data/course_data.php';
         $courseNames = $courseData['names'];
         $courseDescriptions = $courseData['descriptions'];
 
@@ -72,7 +72,7 @@ class AppFixtures extends Fixture
             $manager->persist($cours);
 
             // Inclure les données des étapes à partir du fichier externe
-            $stepData = require __DIR__ . '/../Data/course_step_data.php';
+            $stepData = require __DIR__ . '/Data/course_step_data.php';
 
             // Générer des étapes
             if (isset($stepData[$courseName])) {
