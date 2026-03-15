@@ -8,6 +8,7 @@ use App\Repository\EtapeRepository;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
+
 class HomeController extends AbstractController
 {
     #[Route('/', name: 'app_home')]
