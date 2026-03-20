@@ -37,7 +37,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 255)]
     private ?string $Prenom = null;
 
-    
+
     public function getId(): ?int
     {
         return $this->id;
@@ -137,5 +137,5 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-  
+
 }

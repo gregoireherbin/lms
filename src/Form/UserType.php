@@ -4,9 +4,10 @@ namespace App\Form;
 
 use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 class UserType extends AbstractType
 {
@@ -22,8 +23,11 @@ class UserType extends AbstractType
                 'multiple' => true,
                 'expanded' => false,
             ])
-        
-            ->add('password')
+
+            ->add('plainPassword', PasswordType::class, [
+                'mapped' => false, // Important : on ne mappe pas sur l'entité
+                'required' => true,
+            ])
             ->add('Nom')
             ->add('Prenom')
         ;

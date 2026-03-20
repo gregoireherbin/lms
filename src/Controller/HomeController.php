@@ -8,7 +8,6 @@ use App\Repository\EtapeRepository;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-
 class HomeController extends AbstractController
 {
     #[Route('/', name: 'app_home')]
@@ -20,24 +19,24 @@ class HomeController extends AbstractController
     #[Route('/utilisateurs', name: 'app_users')]
     public function users(UserRepository $users)
     {
-        return $this->render('users.html.twig',[
-            'users'=>$users->findAll()
+        return $this->render('users.html.twig', [
+            'users' => $users->findAll()
         ]);
     }
 
     #[Route('/cours', name: 'app_cours')]
     public function cours(CoursRepository $cours)
     {
-        return $this->render('cours.html.twig',[
-            'cours'=>$cours->findAll()
+        return $this->render('cours.html.twig', [
+            'cours' => $cours->findAll()
         ]);
     }
 
     #[Route('/etapes', name: 'app_etapes')]
     public function etapes(EtapeRepository $etapes)
     {
-        return $this->render('etapes.html.twig',[
-            'etapes'=>$etapes->findAll()
+        return $this->render('etapes.html.twig', [
+            'etapes' => $etapes->findAll()
         ]);
     }
 }

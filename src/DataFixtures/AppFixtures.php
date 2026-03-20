@@ -18,7 +18,7 @@ class AppFixtures extends Fixture
     {
         $this->passwordHasher = $passwordHasher;
     }
-   
+
     public function load(ObjectManager $manager): void
     {
         $faker = Factory::create('fr_FR');
