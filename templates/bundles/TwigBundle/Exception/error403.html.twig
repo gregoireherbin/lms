@@ -1,0 +1,13 @@
+{# templates/bundles/TwigBundle/Exception/error403.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block title %}Accès interdit
+{% endblock %}
+
+{% block body %}
+	<div style="display: flex; flex-direction: column; justify-content: center; align-items: center; height: 80vh; text-align: center;">
+		<h1>403 – Accès interdit</h1>
+		<p>Vous n’êtes pas autorisé à accéder à cette page.</p>
+		<a href="{{ path('app_home') }}">Retour à l’accueil</a>
+	</div>
+{% endblock %}
