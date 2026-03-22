@@ -4,7 +4,7 @@
 {% endblock %}
 
 {% block body %}
-	<h1>User</h1>
+	<h1>Utilisateur</h1>
 
 	<table class="table">
 		<tbody>
@@ -17,13 +17,13 @@
 				<td>{{ user.email }}</td>
 			</tr>
 			<tr>
-				<th>Roles</th>
-				<td>{{ user.roles ? user.roles|json_encode : '' }}</td>
+				<th>Role</th>
+				<td>{{ user.getRolesLabel()|join(', ') }}</td>
 			</tr>
-			<tr>
+			{# <tr>
 				<th>Password</th>
 				<td>{{ user.password }}</td>
-			</tr>
+			</tr> #}
 			<tr>
 				<th>Nom</th>
 				<td>{{ user.Nom }}</td>

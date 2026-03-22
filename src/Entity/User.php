@@ -37,7 +37,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 255)]
     private ?string $Prenom = null;
 
-
     public function getId(): ?int
     {
         return $this->id;
@@ -77,6 +76,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         // $roles[] = 'ROLE_USER';
 
         return array_unique($roles);
+    }
+
+    public function getRolesLabel(): array
+    {
+        $labels = [
+            'ROLE_ADMIN' => 'Administrateur',
+            'ROLE_FORMATEUR' => 'Formateur',
+            'ROLE_ETUDIANT' => 'Etudiant',
+        ];
+
+        // map sur les rôles de l'utilisateur
+        return array_map(fn ($role) => $labels[$role] ?? $role, $this->roles);
     }
 
     /**
@@ -136,6 +147,4 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
-
-
 }
