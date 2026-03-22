@@ -19,3 +19,6 @@
 
 # Ignorer les migrations
 /migrations/
+
+#Ignorer les Data pour les fixtures
+/Data/
