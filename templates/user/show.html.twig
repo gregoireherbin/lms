@@ -1,42 +1,67 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}User
-{% endblock %}
+{% block title %}Profil de {{ user.prenom }} {{ user.nom }} - CyberCamp{% endblock %}
 
 {% block body %}
-	<h1>User</h1>
+<div class="container py-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            
+            <!-- Carte du profil -->
+            <div class="card shadow-sm border-0 rounded-3">
+                <div class="card-body p-4">
+                    
+                    <!-- En-tête de la carte avec avatar fictif -->
+                    <div class="text-center mb-4">
+                        <div class="bg-primary bg-opacity-10 text-primary rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 70px; height: 70px;">
+                            <i class="fa-solid fa-user fa-2x"></i>
+                        </div>
+                        <h1 class="h3 fw-bold text-dark">{{ user.prenom }} {{ user.nom }}</h1>
+                        <p class="text-muted mb-0"><i class="fa-solid fa-envelope me-1"></i> {{ user.email }}</p>
+                    </div>
 
-	<table class="table">
-		<tbody>
-			<tr>
-				<th>Id</th>
-				<td>{{ user.id }}</td>
-			</tr>
-			<tr>
-				<th>Email</th>
-				<td>{{ user.email }}</td>
-			</tr>
-			<tr>
-				<th>Roles</th>
-				<td>{{ user.roles ? user.roles|json_encode : '' }}</td>
-			</tr>
-			<tr>
-				<th>Password</th>
-				<td>{{ user.password }}</td>
-			</tr>
-			<tr>
-				<th>Nom</th>
-				<td>{{ user.Nom }}</td>
-			</tr>
-			<tr>
-				<th>Prenom</th>
-				<td>{{ user.Prenom }}</td>
-			</tr>
-		</tbody>
-	</table>
-	<div class="d-flex">
-		<a href="{{ path('app_user_index') }}" class="btn btn-secondary">back to list</a>
-		{{ include('user/_delete_form.html.twig') }}
-		<a href="{{ path('app_user_edit', {'id': user.id}) }}" class="btn btn-primary ">edit</a>
-	</div>
+                    <hr class="text-muted opacity-25 my-4">
+
+                    <!-- Informations détaillées -->
+                    <ul class="list-group list-group-flush mb-4">
+                        <li class="list-group-item d-flex justify-content-between align-items-center px-0 bg-transparent">
+                            <span class="text-muted">Identifiant (ID)</span>
+                            <span class="fw-semibold text-dark">#{{ user.id }}</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center px-0 bg-transparent">
+                            <span class="text-muted">Rôles</span>
+                            <span>
+                                {% for role in user.roles %}
+                                    {% if role == 'ROLE_ADMIN' %}
+                                        <span class="badge bg-danger"><i class="fa-solid fa-shield-halved me-1"></i> Admin</span>
+                                    {% elseif role == 'ROLE_FORMATEUR' %}
+                                        <span class="badge bg-warning text-dark"><i class="fa-solid fa-chalkboard-user me-1"></i> Formateur</span>
+                                    {% elseif role == 'ROLE_ETUDIANT' %}
+                                        <span class="badge bg-secondary"><i class="fa-solid fa-user-graduate me-1"></i> Étudiant</span>
+                                    {% endif %}
+                                {% endfor %}
+                            </span>
+                        </li>
+                    </ul>
+
+                    <!-- Actions (Retour, Modification, Suppression) -->
+                    <div class="d-flex justify-content-between align-items-center mt-4 pt-2 border-top">
+                        <a href="{{ path('app_user_index') }}" class="btn btn-outline-secondary">
+                            <i class="fa-solid fa-arrow-left me-1"></i> Retour
+                        </a>
+                        
+                        <div class="d-flex gap-2">
+                            <a href="{{ path('app_user_edit', {'id': user.id}) }}" class="btn btn-primary">
+                                <i class="fa-solid fa-pen-to-square me-1"></i> Modifier
+                            </a>
+                            {{ include('user/_delete_form.html.twig') }}
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
 {% endblock %}

@@ -8,3 +8,12 @@
 h1 {
     text-align: center;
 }
+
+.fa-school {
+    margin-right: 5px;
+}
+
+.bg-violet, .bg-violet th {
+    background-color: #0D6EFD;
+    color: white;
+}

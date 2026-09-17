@@ -1,28 +1,47 @@
 {% extends 'base.html.twig' %}
+
+{% block title %}Accueil - CyberCamp{% endblock %}
+
 {% block body %}
-<h1>Bienvenue au Centre de Formation Informatique en Ligne</h1>
-<img src="{{asset('img/accueil.png')}}" alt="" class="accueil">
-Chez LMS, nous croyons que l'éducation est la clé pour ouvrir les portes du succès. Fondé avec la vision de rendre l'apprentissage de l'informatique accessible à tous, notre centre de formation se distingue par son engagement à offrir des cours en ligne de haute qualité, adaptés aux besoins de chaque apprenant.
+<!-- Section Hero (En-tête accrocheur) -->
+<div class="p-5 mb-4 bg-light rounded-3 shadow-sm border">
+    <div class="container-fluid py-4">
+        <h1 class="display-5 fw-bold text-dark">Maîtrisez l'informatique, pas à pas 🚀</h1>
+        <p class="col-md-8 fs-4 text-muted">
+            Bienvenue sur notre plateforme de cours en ligne dédiée au développement, aux algorithmes et aux bonnes pratiques du code.
+        </p>
+        {% if not app.user %}
+            <div class="mt-4">
+                <a class="btn btn-primary btn-lg me-2" href="{{ path('app_login') }}">Commencer dès maintenant</a>
+                <a class="btn btn-outline-secondary btn-lg" href="{{ path('app_cours_index') }}">Explorer le catalogue</a>
+            </div>
+        {% else %}
+            <div class="mt-4">
+                <a class="btn btn-success btn-lg" href="{{ path('app_etape_index') }}">Accéder à mes cours</a>
+            </div>
+        {% endif %}
+    </div>
+</div>
 
-Notre mission est simple : vous fournir les compétences informatiques essentielles pour exceller dans le monde numérique en constante évolution. Que vous soyez un débutant cherchant à découvrir les bases de l'informatique, un professionnel désirant approfondir ses connaissances techniques, ou un passionné souhaitant se lancer dans une nouvelle carrière, nous avons les cours qu'il vous faut.
-
-<h2 class="pt-5">Nos Cours en Ligne</h2>
-Chez LMS, nous proposons une large gamme de cours en ligne couvrant divers domaines de l'informatique, notamment :
-
-Programmation et Développement Web : Apprenez les langages de programmation les plus demandés comme Python, JavaScript, HTML/CSS, et bien d'autres.
-Cybersécurité : Découvrez les meilleures pratiques pour protéger les systèmes et les données contre les cybermenaces.
-Réseaux et Systèmes : Maîtrisez les concepts de base et avancés des réseaux informatiques et de la gestion des systèmes.
-Data Science et Big Data : Plongez dans l'univers des données et apprenez à analyser et interpréter des ensembles de données complexes.
-Intelligence Artificielle et Machine Learning : Explorez les technologies de pointe qui transforment les industries et apprenez à développer des solutions intelligentes.
-Pourquoi Choisir LMS ?
-Flexibilité et Accessibilité : Suivez nos cours à votre rythme, où que vous soyez, grâce à notre plateforme en ligne conviviale et accessible 24/7.
-Formateurs Experts : Bénéficiez de l'expertise de nos formateurs passionnés et expérimentés, issus des meilleures institutions et industries.
-Certifications Reconnues : Obtenez des certifications reconnues qui attestent de vos compétences et vous ouvrent de nouvelles opportunités professionnelles.
-Communauté Engagée : Rejoignez une communauté d'apprenants motivés, échangez des idées, collaborez sur des projets et élargissez votre réseau professionnel.
-Rejoignez-nous dès Aujourd'hui !
-Ne laissez pas passer l'opportunité de transformer votre avenir grâce à l'éducation en ligne. Inscrivez-vous dès aujourd'hui à LMS et commencez votre parcours vers une carrière réussie dans le domaine de l'informatique. Ensemble, nous bâtirons les compétences de demain, dès aujourd'hui.
-
-Pour en savoir plus sur nos cours et programmes, visitez notre site web à [URL du Site Web] ou contactez-nous à [Adresse Email].
-
-Conne
+<!-- Section des Fonctionnalités / Avantages -->
+<div class="row align-items-md-stretch my-5">
+    <div class="col-md-4 mb-4">
+        <div class="h-100 p-4 bg-white border rounded-3 shadow-sm">
+            <h3><i class="fa-solid fa-laptop-code text-primary me-2"></i> Cours Pratiques</h3>
+            <p>Apprenez directement par la pratique avec des exemples de code concrets adaptés à tous les niveaux.</p>
+        </div>
+    </div>
+    <div class="col-md-4 mb-4">
+        <div class="h-100 p-4 bg-white border rounded-3 shadow-sm">
+            <h3><i class="fa-solid fa-chart-line text-success me-2"></i> Suivi d'Étape</h3>
+            <p>Visualisez votre progression étape par étape et validez vos compétences au fur et à mesure.</p>
+        </div>
+    </div>
+    <div class="col-md-4 mb-4">
+        <div class="h-100 p-4 bg-white border rounded-3 shadow-sm">
+            <h3><i class="fa-solid fa-users text-warning me-2"></i> Communauté</h3>
+            <p>Progressez aux côtés d'autres passionnés d'informatique et partagez vos connaissances.</p>
+        </div>
+    </div>
+</div>
 {% endblock %}
