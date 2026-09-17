@@ -31,7 +31,7 @@ class Cours
     #[ORM\JoinColumn(nullable: false)]
     private ?User $formateur = null;
 
-   
+
     public function __construct()
     {
         $this->etapes = new ArrayCollection();
