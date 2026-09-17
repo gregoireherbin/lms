@@ -27,7 +27,10 @@ class UserController extends AbstractController
     public function new(Request $request, EntityManagerInterface $entityManager, UserPasswordHasherInterface $passwordHasher
     ): Response {
         $user = new User();
-        $form = $this->createForm(UserType::class, $user);
+       // Dans votre UserController (ex: méthode new ou edit)
+        $form = $this->createForm(UserType::class, $user, [
+        'is_admin_form' => true, // Active l'affichage du champ rôles
+]       );
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
