@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Cours{% endblock %}
+{% block title %}Cours : {{ cour.titre }}{% endblock %}
 
 {% block body %}
-    <h1>Cours</h1>
+    <h1>{{ cour.titre }}</h1>
 
     <table class="table">
         <tbody>
@@ -22,9 +22,26 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_cours_index') }}">back to list</a>
+    <hr class="my-4">
 
-    <a href="{{ path('app_cours_edit', {'id': cour.id}) }}">edit</a>
+    <h2>Liste des étapes</h2>
+    
+    <ul class="list-group mb-4">
+        {% for etape in cour.etapes %}
+            <li class="list-group-item">
+                {# Lien cliquable vers la page de l'étape (vérifie que le nom de la route correspond bien à ton CRUD) #}
+                <a href="{{ path('app_etape_show', {'id': etape.id}) }}" class="text-decoration-none">
+                    {{ etape.titre }}
+                </a>
+            </li>
+        {% else %}
+            <li class="list-group-item text-muted">Aucune étape n'a encore été ajoutée à ce cours.</li>
+        {% endfor %}
+    </ul>
 
-    {{ include('cours/_delete_form.html.twig') }}
+    <div class="mt-4">
+        <a href="{{ path('app_cours_index') }}" class="btn btn-secondary">Back to list</a>
+        <a href="{{ path('app_cours_edit', {'id': cour.id}) }}" class="btn btn-primary">Edit</a>
+        {{ include('cours/_delete_form.html.twig') }}
+    </div>
 {% endblock %}

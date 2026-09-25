@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ etape.titre }}{% endblock %}
+
+{% block body %}
+    <div class="container my-5">
+        <!-- Fil d'Ariane pour retourner au cours -->
+        <nav aria-label="breadcrumb" class="mb-4">
+            <ol class="breadcrumb">
+                {# <li class="breadcrumb-item"><a href="{{ path('app_front_index') }}">Accueil</a></li>
+                <li class="breadcrumb-item"><a href="{{ path('app_front_course_show', {'id': step.course.id}) }}">{{ step.course.titre }}</a></li>
+                <li class="breadcrumb-item active" aria-current="page">{{ step.titre }}</li> #}
+            </ol>
+        </nav>
+
+        <!-- Carte principale contenant le cours -->
+        <div class="card shadow-sm border-0">
+            <div class="card-body p-5">
+                <h1 class="display-5 fw-bold mb-4 text-primary">{{ etape.titre }}</h1>
+                
+                <hr class="mb-4">
+
+                <!-- Contenu de l'étape -->
+                <div class="course-content fs-5 text-secondary">
+                    {{ etape.contenu|markdown }}
+                </div>
+            </div>
+        </div>
+
+        <!-- Bouton de retour -->
+        <div class="mt-4">
+            {# <a href="{{ path('app_front_course_show', {'id': etape.course.id}) }}" class="btn btn-outline-secondary">
+                ← Retour au cours
+            </a> #}
+        </div>
+    </div>
+{% endblock %}

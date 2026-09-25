@@ -5,47 +5,50 @@
 {% block title %}Liste des étapes - CyberCamp{% endblock %}
 
 {% block body %}
-<div class="container py-4">
-    <!-- En-tête -->
-    <div class="row mb-4">
-        <div class="col-lg-8 mx-auto text-center">
-            <h1 class="fw-bold text-dark"><i class="fa-solid fa-list-check text-primary me-2"></i> Étapes d'Apprentissage</h1>
-            <p class="text-muted">Suivez l'ordre des étapes pour valider vos compétences pas à pas.</p>
+    <div class="container py-4">
+        <!-- En-tête -->
+        <div class="row mb-4">
+            <div class="col-lg-8 mx-auto text-center">
+                <h1 class="fw-bold text-dark"><i class="fa-solid fa-list-check text-primary me-2"></i> Étapes d'Apprentissage</h1>
+                <p class="text-muted">Suivez l'ordre des étapes pour valider vos compétences pas à pas.</p>
+            </div>
         </div>
-    </div>
 
-    <!-- Liste des étapes sous forme de cartes empilées -->
-    <div class="row">
-        <div class="col-lg-8 mx-auto">
-            {% for uneEtape in etapes %}
-                <div class="card shadow-sm border-0 mb-4 rounded-3">
-                    <div class="card-body p-4">
-                        <div class="d-flex align-items-start">
-                            <!-- Icône ou numéro d'étape -->
-                            <div class="bg-primary bg-opacity-10 p-3 rounded-3 text-primary me-3 mt-1">
-                                <i class="fa-solid fa-shoe-prints fa-lg"></i>
-                            </div>
+        <!-- Liste des étapes sous forme de cartes empilées -->
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                {% for uneEtape in etapes %}
+                    <div class="card shadow-sm border-0 mb-4 rounded-3">
+                        <div class="card-body p-4">
+                            <div class="d-flex align-items-start">
+                                <!-- Icône ou numéro d'étape -->
+                                <div class="bg-primary bg-opacity-10 p-3 rounded-3 text-primary me-3 mt-1">
+                                    <i class="fa-solid fa-shoe-prints fa-lg"></i>
+                                </div>
                             
-                            <div class="flex-grow-1">
-                                <h3 class="h5 fw-bold text-dark mb-1">{{ uneEtape.titre }}</h3>
-                                <p class="text-muted small mb-3">{{ uneEtape.description }}</p>
+                                <div class="flex-grow-1">
+                                    <h3 class="h5 fw-bold text-dark mb-1"><a href="{{ path('app_etape_show', {'id': uneEtape.id}) }}">{{ uneEtape.titre }}</a></h3>
+                                    <p class="text-muted small mb-3">{{ uneEtape.description }}</p>
                                 
-                                <hr class="text-muted opacity-25 my-2">
+                                    <hr class="text-muted opacity-25 my-2">
                                 
-                                <div class="card-text text-secondary mt-3">
-                                    {{ uneEtape.contenu }}
+                                 
+                                    <div class="card">
+                                        <div class="card-body">
+                                            {{uneEtape.contenu ? uneEtape.contenu|slice(0, 150) ~ '...' : 'Aucun contenu' }}
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            {% else %}
-                <div class="alert alert-info text-center py-4" role="alert">
-                    <i class="fa-solid fa-circle-info fa-2x mb-2"></i>
-                    <p class="mb-0">Aucune étape n'a été créée pour le moment.</p>
-                </div>
-            {% endfor %}
+                {% else %}
+                    <div class="alert alert-info text-center py-4" role="alert">
+                        <i class="fa-solid fa-circle-info fa-2x mb-2"></i>
+                        <p class="mb-0">Aucune étape n'a été créée pour le moment.</p>
+                    </div>
+                {% endfor %}
+            </div>
         </div>
     </div>
-</div>
 {% endblock %}
